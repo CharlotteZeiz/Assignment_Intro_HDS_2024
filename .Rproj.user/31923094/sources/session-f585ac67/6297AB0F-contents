@@ -1,0 +1,56 @@
+---
+title: "Assignment Intro HDS - Infant Death Scotland"
+author: "Sophie Charlotte Zeiz"
+date: "2024-11-18"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Infant mortality in Scotland\
+
+For this assignment, I wanted to look into the data from the **Scottish Puclic Health Observatory** regarding infant mortality. "The infant mortality rate is defined as the number of children who die before reaching their first birthday in a given year, expressed per 1 000 live births." [OECD/World Health Organization (2018)](https://doi.org/10.1787/health_glance_ap-2018-8-en). Ending preventable deaths of newborns and children under the age of five is one of the World Health Organisations sustainable development goals [1].\
+The dataset used for this assignment was extracted from the [ScotPHO Inline Profiles Tool](https://scotland.shinyapps.io/ScotPHO_profiles_tool/) and is freely available for the public.\
+
+```{r load packages}
+library(readr)
+library(dplyr)
+library(here)
+```
+```{r load data from scotpho}
+library(readr)
+infant_mortality_all_geo <- read_csv("ScotPHO_infant death all geo.csv")
+View(infant_mortality_all_geo)
+```
+```{r prepare data variables}
+mortality_allgeo <- infant_mortality_all_geo %>% 
+  select(`area_type`, `area_name`, `year`,`numerator`) %>% 
+  rename(Year = `year`,
+         Mortality_rate = `numerator`
+         )
+head(mortality_allgeo)
+```
+
+
+## Evolution of infant mortality in Scotland
+```{r graph 1 prep}
+mortality_scotland_total <- mortality_allgeo %>% 
+  select(`area_name`, `Year`,`Mortality_rate`) %>% 
+  filter(`area_name` == "Scotland")
+```
+
+```{r graph mortality scotland trend}
+library(ggplot2)
+mortality_scotland_total %>% 
+  ggplot() +
+  geom_line(aes(x = `Year`, y = `Mortality_rate`))
+```
+Our available data shows a downward trend in the mortality rate in Scotland between the years 2004 and 2019.
+
+
+
+
+
+[1]: https://www.who.int/data/gho/data/themes/topics/sdg-target-3_2-newborn-and-child-mortality)
