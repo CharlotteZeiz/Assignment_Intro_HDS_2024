@@ -1,3 +1,0 @@
-"0","big4_healthboards <- mortality_healthboards %>%"
-"0","  select(`area_name`, `Year`, `Mortality_rate`) %>%"
-"0","  filter(`area_name` %in% c(""NHS Greater Glasgow & Clyde"", ""NHS Grampian"", ""NHS Lothian"", ""NHS Tayside""))"

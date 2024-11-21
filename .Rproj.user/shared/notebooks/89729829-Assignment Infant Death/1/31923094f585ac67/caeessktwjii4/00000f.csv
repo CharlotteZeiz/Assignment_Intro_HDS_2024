@@ -1,3 +1,0 @@
-"0","rural3fold_CA <- rural_3fold %>%"
-"0","  inner_join(`area_to_hsc`, by = ""area_code"") %>% "
-"0","  select(area_code, Classification, CA, HSCP, HB)"

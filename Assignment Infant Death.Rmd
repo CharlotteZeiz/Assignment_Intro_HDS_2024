@@ -92,13 +92,13 @@ View(rural_class_complete)
 ```
 ```{r clean urban rural to 3 categories and}
 rural_3fold <- rural_class_complete %>% 
-  select(`DataZone`, `UR3FOLD`) %>% 
+  select(`DataZone`, `UR6FOLD`) %>% 
   rename(area_code = `DataZone`,
-         Classification = `UR3FOLD`
+         Classification = `UR6FOLD`
          )
 ```
 
-## Enter area code to HSC data
+## Enter council areas to classification data
 ```{r}
 library(readr)
 area_to_hsc <- read_csv("dz2011_codes_and_labels_21042020.csv") %>% 
@@ -111,10 +111,18 @@ rural3fold_CA <- rural_3fold %>%
   select(area_code, Classification, CA, HSCP, HB)
 ```
 
+## Combine council area, mortality rates and rural-urban classification
 ```{r combine rural and mortality}
 combined_mortalityallgeo_rural3fold <- mortality_allgeo %>%
   inner_join(`rural3fold_CA`, by = c("area_code" = "CA")) %>% 
   select(area_type, area_name, Year, Mortality_rate, Classification) 
+```
+```{r get mode with help of chat gtp}
+library(dplyr)
+get_mode <- function(x) {
+  uniq_x <- unique(x)
+  uniq_x[which.max(tabulate(match(x, uniq_x)))]
+}
 ```
 
 ```{r summaryse mortality and classification per area_name and year}
@@ -122,9 +130,36 @@ AVG_mort_class_percouncil_peryear <- combined_mortalityallgeo_rural3fold %>%
   group_by(area_name, Year) %>% 
   summarise(
     avg_mortality_rate = mean(Mortality_rate, na.rm = TRUE),
-    avg_classification = mean(Classification, na.rm = TRUE)
+    mode_classification = get_mode(Classification)
   )
-  
+```
+```{r create classification categories via mode}
+ group_classification <- AVG_mort_class_percouncil_peryear %>% 
+  mutate(mode_classification = case_when(
+    mode_classification == 1 ~ "Large Urban Areas",
+    mode_classification == 2 ~ "Other Urban Areas",
+    mode_classification == 3 ~ "Accessible Small Towns",
+    mode_classification == 4 ~ "Remote Small Towns",
+    mode_classification == 5 ~ "Accessible Rural",
+    mode_classification == 6 ~ "Remote Rural",
+    TRUE ~ "Unknown"  # In case there are other values that don't fit the categories
+  ))
+```
+
+```{r average mort rate per classification}
+avg_class_mort_year <- AVG_mort_class_percouncil_peryear %>%
+  select(`Year`,`avg_mortality_rate`, `mode_classification`) %>%
+  group_by(mode_classification, Year) %>%
+  summarise(AVG2_mortality_rate = mean(avg_mortality_rate, na.rm = TRUE))
+```
+
+```{r Graph2}
+library(ggplot2)
+avg_class_mort_year %>% 
+  select(`Year`, `AVG2_mortality_rate`, `mode_classification`) %>%
+  filter(`Year` %in% c("2011"))
+  ggplot(aes(x = `mode_classification`, y = `AVG2_mortality_rate`, group = `mode_classification`)) +
+  geom_col()
 ```
 
 

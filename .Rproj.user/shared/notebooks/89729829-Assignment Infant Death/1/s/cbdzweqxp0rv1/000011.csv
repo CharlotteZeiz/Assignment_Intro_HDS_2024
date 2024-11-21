@@ -2,6 +2,6 @@
 "0","  group_by(area_name, Year) %>% "
 "0","  summarise("
 "0","    avg_mortality_rate = mean(Mortality_rate, na.rm = TRUE),"
-"0","    mode_classification = mode(Classification)"
+"0","    mode_classification = get_mode(Classification)"
 "0","  )"
 "2","`summarise()` has grouped output by 'area_name'. You can override using the `.groups` argument."

@@ -1,0 +1,19 @@
+"0","library(ggplot2)"
+"0","avg_class_mort_year %>% "
+"0","  select(`Year`, `AVG2_mortality_rate`, `mode_classification`) %>%"
+"0","  ggplot(aes(x = `mode_classification`, `AVG2_mortality_rate`, y = `Year`, group = `mode_classification`)) +"
+"0","  geom_dotplot()"
+"1","[1m[33mError[39m in `geom_dotplot()`:[22m
+[38;5;232m[33m![38;5;232m Problem while setting up geom.
+[36mℹ[38;5;232m Error occurred in the 1st layer.[39m
+[1mCaused by error in `compute_geom_1()`:[22m
+[38;5;232m[33m![38;5;232m `geom_dotplot()` requires the following missing aesthetics: [32my[38;5;232m.[39m
+Backtrace:
+[90m  1. [39m[1mbase[22m (local) `<fn>`(x)
+[90m  2. [39mggplot2:::print.ggplot(x)
+[90m  4. [39mggplot2:::ggplot_build.ggplot(x)
+[90m  5. [39mggplot2:::by_layer(...)
+[90m 12. [39mggplot2 (local) f(l = layers[[i]], d = data[[i]])
+[90m 13. [39ml$compute_geom_1(d)
+[90m 14. [39mggplot2 (local) [1m[94mcompute_geom_1([39m[22m..., self = self[1m[94m)[39m[22m
+"
