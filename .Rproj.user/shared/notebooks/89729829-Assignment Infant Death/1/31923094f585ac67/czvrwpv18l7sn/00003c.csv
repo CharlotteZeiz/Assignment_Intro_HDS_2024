@@ -1,0 +1,6 @@
+"0","library(ggplot2)"
+"0","AVG_mort_class_percouncil_peryear %>% "
+"0","  select(`area_name`, `Year`,`avg_mortality_rate`, `avg_classification`) %>%"
+"0","  filter(`Year` %in% c(""2011"")) %>% "
+"0","  ggplot(aes(x = `area_name`, y = `avg_mortality_rate`, size = `avg_classification`)) +"
+"0","  geom_point(shape = 1, alpha = 0.5)"

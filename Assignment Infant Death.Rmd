@@ -104,13 +104,6 @@ library(readr)
 area_to_hsc <- read_csv("dz2011_codes_and_labels_21042020.csv") %>% 
   rename(area_code = `DataZone`)
 ```
-```{r}
-area_conversion <- area_to_hsc %>% 
-  select(`DataZone`, `CA`, `HSCP`) %>% 
-  rename(council_area = `CA`,
-         hsc_partnership = `HSCP`
-         )
-```
 
 ```{r connecting area code and hsc}
 rural3fold_CA <- rural_3fold %>%
@@ -120,9 +113,18 @@ rural3fold_CA <- rural_3fold %>%
 
 ```{r combine rural and mortality}
 combined_mortalityallgeo_rural3fold <- mortality_allgeo %>%
-  left_join(`rural3fold_CA`, by = c("area_code" = "CA")) %>% 
-  select(area_type, area_name, Year, Mortality_rate, Classification) %>% 
-  filter(`area_type` %in% c("Council area"))
+  inner_join(`rural3fold_CA`, by = c("area_code" = "CA")) %>% 
+  select(area_type, area_name, Year, Mortality_rate, Classification) 
+```
+
+```{r summaryse mortality and classification per area_name and year}
+AVG_mort_class_percouncil_peryear <- combined_mortalityallgeo_rural3fold %>%
+  group_by(area_name, Year) %>% 
+  summarise(
+    avg_mortality_rate = mean(Mortality_rate, na.rm = TRUE),
+    avg_classification = mean(Classification, na.rm = TRUE)
+  )
+  
 ```
 
 

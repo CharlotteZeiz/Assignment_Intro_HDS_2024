@@ -1,0 +1,8 @@
+"0","AVG_mort_class_percouncil_peryear <- combined_mortalityallgeo_rural3fold %>%"
+"0","  group_by(area_name, Year) %>% "
+"0","  summarise("
+"0","    avg_mortality_rate = mean(Mortality_rate, na.rm = TRUE),"
+"0","    avg_classification = mean(Classification, na.rm = TRUE)"
+"0","  )"
+"2","`summarise()` has grouped output by 'area_name'. You can override using the `.groups` argument."
+"0","  "

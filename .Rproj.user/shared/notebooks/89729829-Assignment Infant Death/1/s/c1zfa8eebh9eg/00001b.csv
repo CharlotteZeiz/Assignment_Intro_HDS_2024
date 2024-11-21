@@ -1,0 +1,4 @@
+"0","library(ggplot2)"
+"0","mortality_scotland_total %>% "
+"0","  ggplot() +"
+"0","  geom_line(aes(x = `Year`, y = `Mortality_rate`))"

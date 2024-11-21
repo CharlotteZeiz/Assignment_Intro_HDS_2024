@@ -1,0 +1,11 @@
+"0","library(readr)"
+"0","rural_class_complete <- read_csv(""scottish-government-urban-rural-classification-2020-data-zone-2011-lookup.csv"")"
+"2","[1mRows: [22m[34m6976[39m [1mColumns: [22m[34m5[39m"
+"2","[36m──[39m [1mColumn specification[22m [36m───────────────────────────────────────────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (1): DataZone
+[32mdbl[39m (4): UR2FOLD, UR3FOLD, UR6FOLD, UR8FOLD"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."
+"0","View(rural_class_complete)"
