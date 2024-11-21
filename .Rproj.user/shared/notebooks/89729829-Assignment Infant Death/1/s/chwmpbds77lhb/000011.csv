@@ -1,11 +1,10 @@
 "0","library(readr)"
-"0","infant_mortality_all_geo <- read_csv(""ScotPHO_infant death all geo.csv"")"
-"2","[1mRows: [22m[34m1248[39m [1mColumns: [22m[34m11[39m"
+"0","area_to_hsc <- read_csv(""dz2011_codes_and_labels_21042020.csv"") %>% "
+"0","  rename(area_code = `DataZone`)"
+"2","[1mRows: [22m[34m6976[39m [1mColumns: [22m[34m11[39m"
 "2","[36m──[39m [1mColumn specification[22m [36m───────────────────────────────────────────────────────────────────────────────────────────────────[39m
 [1mDelimiter:[22m "",""
-[31mchr[39m (6): area_code, area_type, area_name, period, type_definition, indicator
-[32mdbl[39m (5): year, numerator, measure, upper_confidence_interval, lower_confidence_interval"
+[31mchr[39m (11): DataZone, DataZoneName, IntZone, IntZoneName, CA, CAName, HSCP, HSCPName, HB, HBName, Country"
 "2","
 [36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
 [36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."
-"0","View(infant_mortality_all_geo)"

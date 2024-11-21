@@ -1,0 +1,7 @@
+"0","library(ggplot2)"
+"0","mortality_healthboards %>% "
+"0","  select(`area_name`, `Year`,`Mortality_rate`) %>%"
+"0","  rename( NHS_board = `area_name`) %>% "
+"0","  group_by(`NHS_board`) %>% "
+"0","  ggplot() +"
+"0","  geom_line(aes(x = `Year`, y = `Mortality_rate`, colour = `NHS_board`))"

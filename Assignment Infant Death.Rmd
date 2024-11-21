@@ -26,15 +26,15 @@ View(infant_mortality_all_geo)
 ```
 ```{r prepare data variables}
 mortality_allgeo <- infant_mortality_all_geo %>% 
-  select(`area_type`, `area_name`, `year`,`numerator`) %>% 
+  select(`area_code`, `area_type`, `area_name`, `year`,`measure`) %>% 
   rename(Year = `year`,
-         Mortality_rate = `numerator`
+         Mortality_rate = `measure`
          )
 head(mortality_allgeo)
 ```
 
 
-## Evolution of infant mortality in Scotland
+## Evolution of the infant mortality rate in Scotland
 ```{r graph 1 prep}
 mortality_scotland_total <- mortality_allgeo %>% 
   select(`area_name`, `Year`,`Mortality_rate`) %>% 
@@ -47,10 +47,83 @@ mortality_scotland_total %>%
   ggplot() +
   geom_line(aes(x = `Year`, y = `Mortality_rate`))
 ```
-Our available data shows a downward trend in the mortality rate in Scotland between the years 2004 and 2019.
+Our available data shows a downward trend in the mortality rate in Scotland between the years 2004 and 2019. In 2004 the mo
+
+##Trends in infant mortality rate per NHS health board in Scotland
+
+To further assess the downward trend of the infant mortality rate we will 
+```{r data health boards}
+mortality_healthboards <- mortality_allgeo %>% 
+  select(`area_type`,`area_name`, `Year`,`Mortality_rate`) %>% 
+  filter(`area_type` == "Health board")
+  
+```
+
+```{r graph per healthboard}
+library(ggplot2)
+mortality_healthboards %>% 
+  select(`area_name`, `Year`,`Mortality_rate`) %>%
+  rename( NHS_board = `area_name`) %>% 
+  group_by(`NHS_board`) %>% 
+  ggplot() +
+  geom_line(aes(x = `Year`, y = `Mortality_rate`, colour = `NHS_board`))
+```
+```{r clean big 4 healthboards}
+big4_healthboards <- mortality_healthboards %>%
+  select(`area_name`, `Year`, `Mortality_rate`) %>%
+  filter(`area_name` %in% c("NHS Greater Glasgow & Clyde", "NHS Grampian", "NHS Lothian", "NHS Tayside"))
+```
 
 
+```{r }
+library(ggplot2)
+big4_healthboards %>% 
+  select(`area_name`, `Year`,`Mortality_rate`) %>%
+  rename( NHS_board = `area_name`) %>% 
+  group_by(`NHS_board`) %>% 
+  ggplot() +
+  geom_line(aes(x = `Year`, y = `Mortality_rate`, colour = `NHS_board`))
+```
+## Enter urban rural data from 2011
+```{r load rural urban classification data}
+library(readr)
+rural_class_complete <- read_csv("scottish-government-urban-rural-classification-2020-data-zone-2011-lookup.csv")
+View(rural_class_complete)
+```
+```{r clean urban rural to 3 categories and}
+rural_3fold <- rural_class_complete %>% 
+  select(`DataZone`, `UR3FOLD`) %>% 
+  rename(area_code = `DataZone`,
+         Classification = `UR3FOLD`
+         )
+```
 
+## Enter area code to HSC data
+```{r}
+library(readr)
+area_to_hsc <- read_csv("dz2011_codes_and_labels_21042020.csv") %>% 
+  rename(area_code = `DataZone`)
+```
+```{r}
+area_conversion <- area_to_hsc %>% 
+  select(`DataZone`, `CA`, `HSCP`) %>% 
+  rename(council_area = `CA`,
+         hsc_partnership = `HSCP`
+         )
+```
+
+```{r connecting area code and hsc}
+rural3fold_CA <- rural_3fold %>%
+  inner_join(`area_to_hsc`, by = "area_code") %>% 
+  select(area_code, Classification, CA, HSCP, HB)
+```
+
+```{r combine rural and mortality}
+combined_mortalityallgeo_rural3fold <- mortality_allgeo %>%
+  left_join(`rural3fold_CA`, by = c("area_code" = "CA")) %>% 
+  select(area_type, area_name, Year, Mortality_rate, Classification) %>% 
+  filter(`area_type` %in% c("Council area"))
+```
 
 
 [1]: https://www.who.int/data/gho/data/themes/topics/sdg-target-3_2-newborn-and-child-mortality)

@@ -1,0 +1,4 @@
+"0","mortality_healthboards <- mortality_allgeo %>% "
+"0","  select(`area_type`,`area_name`, `Year`,`Mortality_rate`) %>% "
+"0","  filter(`area_type` == ""Health board"")"
+"0","  "

@@ -3,7 +3,7 @@
     "path": "~/University of Aberdeen/Introduction to Health Data Science/Assignment_Intro_HDS_2024/Assignment Infant Death.Rmd",
     "project_path": "Assignment Infant Death.Rmd",
     "type": "r_markdown",
-    "hash": "739003878",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1731926857217.0,
@@ -13,16 +13,17 @@
         "tempName": "Untitled3",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "51,0",
-        "scrollLine": "48",
-        "last_setup_crc32": "f585ac67bb338d19"
+        "cursorPosition": "124,44",
+        "scrollLine": "104",
+        "last_setup_crc32": "f585ac67bb338d19",
+        "docOutlineVisible": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1731929774,
+    "lastKnownWriteTime": 1732201608,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1731929774933,
+    "last_content_update": 1732201608901,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -1,6 +1,6 @@
 "0","mortality_allgeo <- infant_mortality_all_geo %>% "
-"0","  select(`area_type`, `area_name`, `year`,`numerator`) %>% "
+"0","  select(`area_code`, `area_type`, `area_name`, `year`,`measure`) %>% "
 "0","  rename(Year = `year`,"
-"0","         Mortality_rate = `numerator`"
+"0","         Mortality_rate = `measure`"
 "0","         )"
 "0","head(mortality_allgeo)"

@@ -1,0 +1,5 @@
+"0","combined_mortalityallgeo_rural3fold <- mortality_allgeo %>%"
+"0","  left_join(`rural3fold_CA`, by = c(""area_code"" = ""CA"")) %>% "
+"0","  select(area_type, area_name, Year, Mortality_rate, Classification) %>% "
+"0","  filter(`area_type` %in% c(""Council area""))"
+"2","Warning: Detected an unexpected many-to-many relationship between `x` and `y`."
