@@ -51,12 +51,10 @@ Our available data shows a downward trend in the mortality rate in Scotland betw
 
 ##Trends in infant mortality rate per NHS health board in Scotland
 
-To further assess the downward trend of the infant mortality rate we will 
 ```{r data health boards}
 mortality_healthboards <- mortality_allgeo %>% 
   select(`area_type`,`area_name`, `Year`,`Mortality_rate`) %>% 
   filter(`area_type` == "Health board")
-  
 ```
 
 ```{r graph per healthboard}
@@ -157,9 +155,23 @@ avg_class_mort_year <- AVG_mort_class_percouncil_peryear %>%
 library(ggplot2)
 avg_class_mort_year %>% 
   select(`Year`, `AVG2_mortality_rate`, `mode_classification`) %>%
-  filter(`Year` %in% c("2011"))
-  ggplot(aes(x = `mode_classification`, y = `AVG2_mortality_rate`, group = `mode_classification`)) +
+  filter(`Year` %in% c("2004", "2008", "2012", "2016")) %>% 
+  ggplot(aes(x = `mode_classification`, y = `AVG2_mortality_rate`, group = `Year`)) +
   geom_col()
+```
+```{r average mort rate per text classification}
+avg_class_mort_year <- group_classification %>%
+  select(`Year`,`avg_mortality_rate`, `mode_classification`) %>%
+  group_by(mode_classification, Year) %>%
+  summarise(avg_mortalityrate = mean(avg_mortality_rate, na.rm = TRUE))
+```
+```{r}
+library(ggplot2)
+avg_class_mort_year %>% 
+  select(`Year`,`avg_mortalityrate`, `mode_classification`) %>%
+  group_by(mode_classification) %>% 
+  ggplot() +
+  geom_line(aes(x= Year, y= avg_mortalityrate, colour = mode_classification))
 ```
 
 

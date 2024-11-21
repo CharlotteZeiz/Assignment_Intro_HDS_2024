@@ -1,0 +1,6 @@
+"0","library(ggplot2)"
+"0","avg_class_mort_year %>% "
+"0","  select(`Year`,`avg_mortalityrate`, `mode_classification`) %>%"
+"0","  group_by(mode_classification) %>% "
+"0","  ggplot() +"
+"0","  geom_line(aes(x= Year, y= avg_mortalityrate, colour = mode_classification))"

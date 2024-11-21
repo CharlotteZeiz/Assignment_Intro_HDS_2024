@@ -1,0 +1,6 @@
+"0","library(ggplot2)"
+"0","avg_class_mort_year %>% "
+"0","  select(`Year`, `AVG2_mortality_rate`, `mode_classification`) %>%"
+"0","  filter(`Year` %in% c(""2004"", ""2008"", ""2012"", ""2016"")) %>% "
+"0","  ggplot(aes(x = `mode_classification`, y = `AVG2_mortality_rate`, group = `Year`)) +"
+"0","  geom_col()"
