@@ -1,5 +1,0 @@
-"0","library(dplyr)"
-"0","get_mode <- function(x) {"
-"0","  uniq_x <- unique(x)"
-"0","  uniq_x[which.max(tabulate(match(x, uniq_x)))]"
-"0","}"
