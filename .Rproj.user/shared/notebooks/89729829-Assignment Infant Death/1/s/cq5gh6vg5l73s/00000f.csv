@@ -1,5 +1,0 @@
-"0","rural_6fold <- rural_class_complete %>% "
-"0","  select(`DataZone`, `UR6FOLD`) %>% "
-"0","  rename(area_code = `DataZone`,"
-"0","         Classification = `UR6FOLD`"
-"0","         )"

@@ -1,4 +1,0 @@
-"0","avg_class_mort_year <- group_classification %>%"
-"0","  select(`year`,`avg_mortality_rate`, `mode_classification`) %>%"
-"0","  group_by(mode_classification, year) %>%"
-"0","  summarise(avg_mortalityrate = mean(avg_mortality_rate, na.rm = TRUE))"

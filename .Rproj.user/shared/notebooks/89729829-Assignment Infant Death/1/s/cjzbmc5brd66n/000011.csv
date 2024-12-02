@@ -1,6 +1,0 @@
-"0","avg_class_mort_year <- group_classification %>%"
-"0","  select(`Year`,`avg_mortality_rate`, `mode_classification`) %>%"
-"0","  group_by(mode_classification, Year) %>%"
-"0","  summarise(avg_mortalityrate = mean(avg_mortality_rate, na.rm = TRUE))"
-"2","Adding missing grouping variables: `area_name`"
-"2","`summarise()` has grouped output by 'mode_classification'. You can override using the `.groups` argument."
