@@ -1,0 +1,5 @@
+"0",""
+"0","#Histogram"
+"0","mortality_scot_by_council %>% "
+"0","  ggplot(aes(x = mortality_rate))+"
+"0","  geom_histogram()"

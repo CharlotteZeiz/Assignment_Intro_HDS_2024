@@ -1,0 +1,13 @@
+"0",""
+"0","#Q-Q-plot"
+"0","mortality_scot_by_council %>% "
+"0","  ggplot(aes(sample = mortality_rate))+"
+"0","           geom_qq()+"
+"0","  geom_qq_line()"
+"2","Warning in gzfile(file, ""wb"") :"
+"2","
+ "
+"2"," cannot open compressed file 'C:/Users/charl/OneDrive/Documentos/University of Aberdeen/Introduction to Health Data Science/Assignment_Intro_HDS_2024/Method/.Rproj.user/shared/notebooks/7BC9CFAD-Assignment Infant Death/1/319230945ff83523/c8atos7duvvqx_t/480913cb231044bf94c0d5e7c67e2595.snapshot', probable reason 'No such file or directory'
+"
+"2","Error in gzfile(file, ""wb"") : cannot open the connection
+"

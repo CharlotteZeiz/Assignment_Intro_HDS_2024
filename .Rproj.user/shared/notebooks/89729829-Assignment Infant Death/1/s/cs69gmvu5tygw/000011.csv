@@ -1,0 +1,6 @@
+"0",""
+"0","#Q-Q-plot"
+"0","mortality_scot_by_council %>% "
+"0","  ggplot(aes(sample = mortality_rate))+"
+"0","           geom_qq()+"
+"0","  geom_qq_line()"
