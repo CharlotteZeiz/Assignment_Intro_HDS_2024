@@ -1,5 +1,5 @@
 ﻿# Assignment_Intro_HDS_2024
- Rapport Infant Death in Scotland
+ Report Infant Death in Scotland
 
 Aims
 The aim of this assessment is to apply the data science skills you have developed to an example healthcare problem.
