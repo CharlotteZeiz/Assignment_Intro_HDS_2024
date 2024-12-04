@@ -1,0 +1,4 @@
+"0","#Read in data from ScotPHO"
+"0",""
+"0","library(readr)"
+"0","infant_death_all_geo <- read_csv(""~/University of Aberdeen/Introduction to Health Data Science/Assignment_Intro_HDS_2024/Input/ScotPHO_infantdeath_all_update.csv"")"
