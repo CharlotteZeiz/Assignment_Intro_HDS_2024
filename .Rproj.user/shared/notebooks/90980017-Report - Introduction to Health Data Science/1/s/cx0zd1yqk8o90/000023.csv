@@ -1,0 +1,7 @@
+"2","Warning in gzfile(file, ""wb"") :"
+"2","
+ "
+"2"," cannot open compressed file 'C:/Users/charl/OneDrive/Documentos/University of Aberdeen/Introduction to Health Data Science/Assignment_Intro_HDS_2024/.Rproj.user/shared/notebooks/90980017-Report - Introduction to Health Data Science/1/s/cx0zd1yqk8o90_t/8d76bb82cb2b4c49b6513824803bf12a.snapshot', probable reason 'No such file or directory'
+"
+"2","Error in gzfile(file, ""wb"") : cannot open the connection
+"

@@ -1,9 +1,9 @@
 {
     "id": "87BAE272",
-    "path": "~/University of Aberdeen/Introduction to Health Data Science/Assignment_Intro_HDS_2024/Method/Assignment Infant Death.Rmd",
-    "project_path": "Method/Assignment Infant Death.Rmd",
+    "path": "~/University of Aberdeen/Introduction to Health Data Science/Assignment_Intro_HDS_2024/Method/Report - PU5058 Introduction to Health Data Science.Rmd",
+    "project_path": "Method/Report - PU5058 Introduction to Health Data Science.Rmd",
     "type": "r_markdown",
-    "hash": "3839897441",
+    "hash": "2067702068",
     "contents": "",
     "dirty": false,
     "created": 1733225362919.0,
@@ -12,17 +12,17 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "130,70",
-        "scrollLine": "123",
-        "last_setup_crc32": "808c2041bb338d19",
+        "cursorPosition": "179,9",
+        "scrollLine": "176",
+        "last_setup_crc32": "1c14191cbb338d19",
         "docOutlineVisible": "1"
     },
     "folds": "",
-    "lastKnownWriteTime": 1733345338,
+    "lastKnownWriteTime": 1733477210,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1733345338099,
+    "last_content_update": 1733477210714,
     "read_only": false,
     "read_only_alternatives": []
 }
